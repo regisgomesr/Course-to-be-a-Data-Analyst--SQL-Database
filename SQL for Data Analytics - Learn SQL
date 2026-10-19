@@ -1,0 +1,567 @@
+
+SQL for Data Analytics - Learn SQL in 4 Hours
+
+
+LUKE BAROUSSE YOUTUBE
+
+
+
+FREE Course to be a Data Analyst: SQL Database
+FREE Course to be a Data Analyst: SQL Database
+
+
+
+
+
+DATABASES:
+
+
+STACK OVERFLOW DEVELOPER
+
+
+
+THIS YEAR, POSTGRESQL TOOK OVER THE FIRST PLACE SPOT FROM MYSQL. PROFESSIONAL DEVELOPERS ARE MORE 
+LIKELY THAN THOSE LEARNING TO CODE TO USE POSTGRESQL (50%) AND THOSE LEARNING ARE MORE LIKELY TO USE 
+MYSQL (54%).
+
+
+MONGODB IS USED BY A SIMILAR PERCENTAGE OF BOTH PROFESSIONAL DEVELOPERS AND THOSE LEARNING TO CODE AND ITS 
+THE SECOND MOST POPULAR DATABASE FOR THOSE LEARNING TO CODE (BEHIND MYSQL)
+
+
+POSTGRESQL 	= 45.55%
+
+MYSQL		= 41.09%
+
+SQLITE		= 30.9%
+
+MONGODB		=  25.52%
+
+MICROSOFT SQL SERVER = 25.45% 
+
+REDIS		= 
+
+MARIADB		= 
+
+
+
+TOP SKILLS FOR DATA NERDS:
+
+
+PYTHON	= 55.2%
+
+SQL		= 54.2%
+
+AWS
+
+AZURE
+
+SPARK
+
+R
+
+TABLEAU
+
+JAVA
+
+
+
+
+TABELAS:
+
+
+JOB_POSTINGS_FACT
+
+
+SKILLS_JOB_DIM
+
+COMPANY_DIM 
+
+SKILLS_DIM
+
+
+
+
+FACT TABLES:
+
+CONTAINS THE CORE DATA FOR BUSINESS ANALYSIS.
+
+MEASURE AND RECORD BUSINESS EVENTS (E.G., JOB POSTINGS).
+
+
+
+TABELAS DE FATOS:
+
+CONTÊM OS DADOS CENTRAIS PARA ANÁLISE DE NEGÓCIOS.
+
+MENSURAM E REGISTRAM EVENTOS DE NEGÓCIOS (POR EX., ANÚNCIOS DE VAGAS).
+
+
+
+DIMENSION TABLES:
+
+DESCRIBE ATTRIBUTES OR DIMENSIONS OF THE DATA (E.G., SKILLS, COMPANIES).
+
+SUPPORT FILTERING, GROUPING, AND LABELING OF FACTS IN REPORTS.
+
+
+
+TABELAS DE DIMENSÃO:
+
+DESCREVEM ATRIBUTOS OU DIMENSÕES DOS DADOS (POR EX., HABILIDADES, EMPRESAS).
+
+PERMITEM FILTRAR, AGRUPAR E ROTULAR FATOS EM RELATÓRIOS.
+
+
+
+
+VIZ DATABASE BROWSER
+
+
+SQLITEVIZ
+
+
+
+SELECT / FROM 
+
+LIMIT 
+
+DISTINCT
+
+WHERE
+
+ -- COMMENTS
+ 
+ /*
+	MULTI-LINE COMMENT
+ 
+ 
+ */
+
+ORDER BY
+
+
+===============================================================================
+
+DATABASE:
+
+lukeb.co/sql_jobs_db
+
+
+
+===============================================================================
+
+
+
+SELECT * 
+FROM job_postings_fact
+
+
+
+SELECT * 
+FROM company_dim
+
+
+
+SELECT job_title_short, job_location
+FROM job_postings_fact
+
+
+
+SELECT job_title_short, job_location
+FROM job_postings_fact
+LIMIT 5
+
+
+
+===============================================================================
+
+
+
+DISTINCT:
+
+
+SELECT DISTINCT
+	job_title_short
+	
+	
+Notes:
+
+DISTINCT - get unique rows
+
+This usually isnt used for the entire query
+
+Why? it takes up a lot of processing power
+
+Used within certain SQL functions (more on that later)
+
+
+Notas:
+DISTINCT – obtém linhas exclusivas
+Geralmente, não é utilizado para a consulta inteira
+Por quê? Consome muito poder de processamento
+É utilizado dentro de determinadas funções SQL (veremos mais sobre isso adiante)
+
+
+
+
+SELECT DISTINCT 
+	job_title_short
+FROM job_postings_fact;
+
+
+
+SELECT DISTINCT 
+	salary_year_avg
+FROM job_postings_fact;
+
+
+
+
+===============================================================================
+
+
+WHERE:
+
+
+
+SELECT 
+	job_title_short,
+	job_location,
+	job_via,
+	salary_year_avg
+FROM
+	job_postings_fact
+WHERE 
+	job_title_short = 'Data Analyst';
+
+
+
+SELECT 
+	job_title_short,
+	job_location,
+	job_via,
+	salary_year_avg
+FROM
+	job_postings_fact
+WHERE 
+	salary_year_avg > 90000;
+
+
+
+
+
+
+
+-- COMMENTS
+
+
+-- query to see relevant data for Data Analyst
+SELECT 
+	job_title_short,
+	job_location,
+	job_via,
+	salary_year_avg
+FROM
+	job_postings_fact
+WHERE 
+	job_title_short = 'Data Analyst';
+
+
+
+
+/*
+
+multi
+line
+comment
+
+
+*/
+
+
+
+ORDER BY
+	salary_year_avg
+	
+	
+	
+SELECT 
+	job_title_short,
+	job_location,
+	job_via,
+	salary_year_avg
+FROM
+	job_postings_fact
+WHERE 
+	job_title_short = 'Data Analyst';
+ORDER BY 
+	salary_year_avg;
+
+
+
+
+SELECT 
+	job_title_short,
+	job_location,
+	job_via,
+	salary_year_avg
+FROM
+	job_postings_fact
+WHERE 
+	job_title_short = 'Data Analyst';
+ORDER BY 
+	salary_year_avg DESC;
+
+
+
+
+ORDER TO WRITE COMMANDS:
+
+
+SELECT column1, column2
+FROM table_name
+WHERE condition
+GROUP BY column1
+HAVING condition
+ORDER BY column [ASC|DESC]
+LIMIT number;
+
+
+
+================================================================
+================================================================
+
+
+
+PRACTICE PROBLEM 1
+QUESTION:
+
+
+GET THE UNIQUE (DISTINCT) JOB LOCATIONS IN THE job_postings_fact TABLE. ORDER IN ALPHABETICAL
+ORDER (ASCENDING ORDER).
+
+
+SELECT DISTINCT job_location 
+FROM job_postings_fact
+ORDER BY job_location;
+
+
+
+PRACTICE PROBLEM 2
+QUESTION:
+
+
+
+IN THE job_postings_fact TABLE GET THE COLUMNS job_id, job_title_short, job_location,
+and job_via COLUMNS. AND ORDER IT IN ASCENDING ORDER BY job_location.
+
+
+SELECT job_id, job_title_short, job_location, job_via
+FROM job_postings_fact
+ORDER BY job_location;
+
+
+
+PRACTICE PROBLEM 3
+QUESTION:
+
+
+In the job_postings_fact table get the columns job_id, job_title_short, job_location,
+job_via, and salary_year_avg columns. And only look at rows where job_title_short is
+'Data Engineer'.
+
+
+
+SELECT job_id, job_title_short, job_location, job_via, salary_year_avg
+FROM job_postings_fact
+WHERE job_title_short = 'Data Engineer';
+
+
+
+
+
+================================================================
+================================================================
+
+
+
+BASICS COMPARISONS
+
+
+WHERE 
+	job_title = 'Data Analyst'
+	
+	
+
+
+Notes:
+
+Used within the WHERE or HAVING clause
+	Note: Well cover the HAVING clause in an upcoming section
+	
+
+Used in conjunction with comparison operators:
+	=, <>, >, <, >=, and <=
+	
+
+Used in conjunction with logical operators:
+	AND, OR, BETWEEN, and IN
+
+
+
+================================================================
+================================================================
+
+
+
+
+SELECT 
+	job_id, 
+	job_title_short, 
+	job_location, 
+	job_via, 
+	salary_year_avg
+FROM 
+	job_postings_fact
+WHERE
+	job_via <> 'via AI-jobs.net';
+
+
+
+
+
+SELECT 
+	job_id, 
+	job_title_short, 
+	job_location, 
+	job_via, 
+	salary_year_avg
+FROM 
+	job_postings_fact
+WHERE NOT
+	job_via <> 'via LinkedIn';
+
+
+
+
+SELECT 
+	job_id, 
+	job_title_short, 
+	job_location, 
+	job_via, 
+	salary_year_avg
+FROM 
+	job_postings_fact
+WHERE
+	job_via = 'via LinkedIn';
+
+
+
+
+
+SELECT 
+	job_id, 
+	job_title_short, 
+	job_location, 
+	job_via, 
+	salary_year_avg
+FROM 
+	job_postings_fact
+WHERE 
+	salary_year_avg > 50000
+ORDER BY
+	salary_year_avg DESC;
+	
+	
+	
+
+
+SELECT 
+	job_id, 
+	job_title_short, 
+	job_location, 
+	job_via, 
+	salary_year_avg
+FROM 
+	job_postings_fact
+WHERE 
+	salary_year_avg > 100000
+	AND job_title = 'Data Analyst'
+ORDER BY
+	salary_year_avg;
+
+
+
+
+
+SELECT 
+	job_id, 
+	job_title_short, 
+	job_location, 
+	job_via, 
+	salary_year_avg
+FROM 
+	job_postings_fact
+WHERE 
+	salary_year_avg > 100000
+	OR job_title = 'Data Analyst'
+ORDER BY
+	salary_year_avg;
+
+
+
+
+
+SELECT 
+	job_id, 
+	job_title_short, 
+	job_location, 
+	job_via, 
+	salary_year_avg
+FROM 
+	job_postings_fact
+WHERE 
+	salary_year_avg > 100000
+	AND salary_year_avg < 200000
+ORDER BY
+	salary_year_avg DESC;
+
+
+
+
+SELECT 
+	job_id, 
+	job_title_short, 
+	job_location, 
+	job_via, 
+	salary_year_avg
+FROM 
+	job_postings_fact
+WHERE 
+	salary_year_avg BETWEEN 100000 AND 200000
+ORDER BY
+	salary_year_avg DESC;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
