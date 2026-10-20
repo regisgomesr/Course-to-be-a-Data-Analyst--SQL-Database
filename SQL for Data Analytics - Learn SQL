@@ -649,11 +649,94 @@ WHERE
 
 
 
+SELECT 
+	job_id,
+	job_title,
+	job_title_short, 
+	job_location, 
+	job_via, 
+	salary_year_avg
+FROM 
+	job_postings_fact
+WHERE 
+	job_title LIKE '%Business%Analyst%';
+
+
+
+SELECT 
+	job_id,
+	job_title,
+	job_title_short, 
+	job_location, 
+	job_via, 
+	salary_year_avg
+FROM 
+	job_postings_fact
+WHERE 
+	job_title LIKE '%Business_Analyst%';
+
+
+
+
+SELECT 
+	job_title_short AS job_title,
+	job_location AS location,
+	job_via AS online_pratform,
+	salary_year_avg AS salary
+FROM
+	job_postings_fact;
 
 
 
 
 
+SELECT 
+	jpc.job_title_short AS job_title,
+	jpc.job_location AS location,
+	jpc.job_via AS online_pratform,
+	jpc.salary_year_avg AS salary
+FROM
+	job_postings_fact AS jpc;
+
+
+
+
+==============================================================================
+==============================================================================
+
+
+PRACTICE PROBLEM 2:
+QUESTION:
+
+Look for non-senior data analyst or business analyst roles
+Get the job title, location, and average yearly salary.
+
+
+
+SELECT 
+	job_title,
+	job_location AS location, 
+	salary_year_avg AS salary
+FROM 
+	job_postings_fact
+WHERE 
+	(job_title LIKE '%Data%' OR job_title LIKE '%Business%') 
+	AND job_title LIKE '%Analyst%'
+	AND job_title NOT LIKE '%Senior%';
+
+
+/*
+- Only get job titles that include either 'Data' or 'Business'
+- Also include those with 'Analyst' in any part of the title
+- Don't include any job titles with 'Senior' followed by any character
+*/
+
+
+
+
+
+==============================================================================
+==============================================================================
 
 
 
