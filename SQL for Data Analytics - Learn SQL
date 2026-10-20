@@ -740,6 +740,113 @@ WHERE
 
 
 
+OPERATIONS:
+
+Arithmetic Operations: These operations are used to perform mathematical calculations.
+
++ Addition: Adds two numbers together.
+
+- Subtraction: Subtracts the second number from the first.
+
+* Multiplication: Multiplies two nukbers.
+
+/ Division: Divides the first number by the second.
+
+% Modulus: Returns the remainder of a division operation.
+
+
+
+
+==============================================================================
+==============================================================================
+
+
+lukeb.co/sql_invoices_db
+
+
+
+SELECT * 
+FROM invoices_fact
+
+
+SELECT 
+	project_company,
+	nerd_id,
+	nerd_role,
+	hours_rate AS rate_original,
+	hours_rate - 5 AS rate_drop,
+	hours_rate + 5 AS rate_hike
+FROM invoices_fact;
+
+
+
+SELECT 
+	project_company,
+	nerd_id,
+	nerd_role,
+	hours_spent,
+	hours_rate AS rate_original,
+	hours_rate - 5 AS rate_drop,
+	hours_rate + 5 AS rate_hike
+FROM invoices_fact;
+
+
+
+
+SELECT 
+	project_company,
+	nerd_id,
+	nerd_role,
+	hours_spent,
+	hours_rate AS rate_original,
+	hours_rate + 5 AS rate_hike,
+	(hours_rate + 5) * hours_spent AS project_total
+FROM invoices_fact
+WHERE
+	rate_hike * hours_spent > 1000;
+
+-- project total (after hike) = rate_hike * hours_spent
+
+
+
+
+
+SELECT 
+	project_company,
+	nerd_id,
+	nerd_role,
+	hours_spent,
+	hours_rate AS rate_original,
+	hours_rate + 5 AS rate_hike,
+	(hours_rate + 5) * hours_spent AS project_total
+FROM invoices_fact
+WHERE
+	project_total > 1000
+ORDER BY project_total DESC;
+
+
+
+
+==============================================================================
+==============================================================================
+
+
+
+
+quando salvo algum arquivo no github e subo, ele reconhe-se a linguagem de programação. mesmo sendo um .txt
+
+ou ele só reconhesse por exemplo se eu colcoar o arquivo .sql 
+
+E outra coisa ele consegue ler a quantidade de linhas de modificação num só arquivo? porque estou fazendo 
+muitas querys treinando e subindo tudo num só arquivo pra ficar mais facil, se não eu teria que fazer muitos arquivos 
+por causa do curso que estou fazendo de sql.
+
+
+
+
+
+
+
 
 
 
