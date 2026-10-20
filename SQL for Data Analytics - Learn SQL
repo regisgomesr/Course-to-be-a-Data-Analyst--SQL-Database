@@ -547,6 +547,110 @@ ORDER BY
 
 
 
+SELECT 
+	job_id, 
+	job_title_short, 
+	job_location, 
+	job_via, 
+	salary_year_avg
+FROM 
+	job_postings_fact
+WHERE 
+	job_title_short = 'Data Analyst' OR
+	job_title_short = 'Data Engenieer';
+
+
+
+SELECT 
+	job_id, 
+	job_title_short, 
+	job_location, 
+	job_via, 
+	salary_year_avg
+FROM 
+	job_postings_fact
+WHERE 
+	job_title_short IN ('Data Analyst', 'Data Engineer');
+
+
+
+
+=======================================================================
+=======================================================================
+
+
+
+PRACTICE PROBLEM 1:
+Question:
+
+
+Get job details for BOTH 'Data Analyst' or 'Business Analyst' positions
+
+	For 'Data Analyst', I want jobs only > $100K
+	For 'Business Analyst', I only want jobs > $70K
+
+Only include jobs located in EITHER:
+
+	'Boston, MA'
+	'Anywhere' (i.e, Remote jobs)
+
+
+
+
+
+
+
+SELECT 
+	job_title_short,
+	job_location,
+	job_via,
+	salary_year_avg
+FROM
+	job_postings_fact
+WHERE
+	job_location IN ('Boston, MA', 'Anywhere')
+	AND	
+	(
+		(job_title_short = 'Data Analyst' AND salary_year_avg > 100000)
+		OR (job_title_short = 'Business Analyst' AND salary_year_avg > 70000)
+	);
+ 
+
+
+
+
+
+=======================================================================
+=======================================================================
+
+
+WILDCARDS
+
+
+WHERE 
+	job_title LIKE '%Data%'
+	
+	
+	
+
+
+SELECT 
+	job_id,
+	job_title,
+	job_title_short, 
+	job_location, 
+	job_via, 
+	salary_year_avg
+FROM 
+	job_postings_fact
+WHERE 
+	job_title LIKE '%Analyst%';
+
+
+
+
+
+
 
 
 
